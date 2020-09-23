@@ -1,12 +1,18 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import {
-    Link
+     useHistory
 } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
 
 
 const NavbarComp = () => {
-    const { state } = useContext(AuthContext)
+    const { state, logout } = useContext(AuthContext)
+    const history = useHistory();
+
+    const logoutAndRedirect = () =>{
+        logout();
+        history.push('/');
+    }
     return (
         <div>
             <nav className="navbar navbar-expand-md navbar-light bg-light">
@@ -23,15 +29,15 @@ const NavbarComp = () => {
                     {state.isAuthenticated ?
                         <ul className="navbar-nav">
                             <li className="nav-item">
-                                <Link className="nav-link" to='/register' >Log Out</Link>
+                                <button className="btn btn-link shadow-none" onClick = {() => logoutAndRedirect()}>Log Out</button>
                             </li>
                         </ul> :
                         <ul className="navbar-nav">
                             <li className="nav-item">
-                                <Link className="nav-link" to='/login' >Login</Link>
+                                <button className="btn btn-link nav-link shadow-none"  onClick = {() => history.push('/login')}>Login</button>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to='/register' >Register</Link>
+                                <button className="btn btn-link nav-link shadow-none" onClick = {() => history.push('/register')}>Register</button>
                             </li>
                         </ul>}
                 </div>

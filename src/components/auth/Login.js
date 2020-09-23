@@ -1,14 +1,22 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { AuthContext } from '../../contexts/AuthContext';
 import { sha256 } from 'js-sha256';
+import { useHistory } from "react-router"
 
 function Login() {
 
-    const { login } = useContext(AuthContext);
+    const { login, state } = useContext(AuthContext);
     const [email, setemail] = useState('');
     const [password, setpassword] = useState('');
     const [error, seterror] = useState(false);
     const [isSucces, setisSucces] = useState(false)
+    let history = useHistory()
+
+    useEffect(() => {
+        if(state.isAuthenticated){
+                history.push('/')
+        }
+    },)
 
     const handleLogin = (e) => {
         e.preventDefault();

@@ -11,6 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import AuthContextProvider from './contexts/AuthContext';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
+
 ReactDOM.render((
   <AuthContextProvider>
     <Router>

@@ -22,9 +22,16 @@ class AuthContextProvider extends Component {
         })
     }
 
+    logout = () => {
+        this.setState({
+            id : '',
+            isAuthenticated : false
+        })
+    }
+
     render() {
         return (
-            <AuthContext.Provider value={{ ...this.state, login: this.login, register: this.register,state : this.state }}>
+            <AuthContext.Provider value={{ ...this.state, login: this.login, register: this.register,state : this.state,logout : this.logout }}>
                 {this.props.children}
             </AuthContext.Provider>
         );
