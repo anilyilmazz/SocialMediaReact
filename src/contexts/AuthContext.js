@@ -4,28 +4,27 @@ export const AuthContext = createContext();
 class AuthContextProvider extends Component {
     state = {
         id : '',
-        password : '',
         isAuthenticated : false
     }
     
-    login = () => {
-        fetch(`https://api.backendless.com/${process.env.REACT_APP_API_KEY}/data/Accounts`)
-            .then(response => response.json())
-            .then(data => console.log(data));
-    }
-
-    register = (id,password) => {
+    login = (id) => {
         this.setState({
             id : id,
-            password : password,
             isAuthenticated : true
         })
         console.log(this.state);
     }
 
+    register = (id) => {
+        this.setState({
+            id : id,
+            isAuthenticated : true
+        })
+    }
+
     render() {
         return (
-            <AuthContext.Provider value={{ ...this.state, login: this.login, register: this.register, newRegister: this.newRegister }}>
+            <AuthContext.Provider value={{ ...this.state, login: this.login, register: this.register,state : this.state }}>
                 {this.props.children}
             </AuthContext.Provider>
         );

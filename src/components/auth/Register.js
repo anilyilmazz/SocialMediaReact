@@ -13,8 +13,9 @@ function Register() {
 
     const handleRegister = (e) => {
         e.preventDefault();
-        if (password != null && retrypassword != null && retrypassword === password) {
-            setpasswordSame(false);
+        clearErrors();
+        if (password != null && retrypassword != null && retrypassword === password) {           
+            
             let userObject = {
                 Email: email,
                 Password: sha256(password),
@@ -38,25 +39,32 @@ function Register() {
                         fetch(`https://api.backendless.com/${process.env.REACT_APP_API_KEY}/data/Accounts`, requestOptions)
                             .then(response => response.json())
                             .then((data) => {
-                                register(data.objectId,data.Password);
-                                setisunique(true);
-                                setpasswordSame(false);
+                                register(data.objectId);
+                                clearInputs();
+                                clearErrors();
                                 setsuccess(true);
-                                setemail('');
-                                setpassword('')
-                                setretrypassword('');
                             });
-                    } else {
+                    }else {
+                        clearErrors();
                         setisunique(false);
-                        setpasswordSame(false);
-                        setsuccess(false);
                     }
                 });
         } else {
+            clearErrors();
             setpasswordSame(true);
-            setisunique(true);
-            setsuccess(false);
         }
+    }
+
+    const clearErrors = () =>{
+        setsuccess(false);
+        setpasswordSame(false);
+        setisunique(true);
+    }
+
+    const clearInputs = () =>{
+        setemail('');
+        setpassword('')
+        setretrypassword('');
     }
     return (
         <div className="w-50 mx-auto mt-3">
