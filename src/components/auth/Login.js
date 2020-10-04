@@ -56,7 +56,7 @@ function Login() {
                 </div> :
                 <div></div>
             }
-            <form onSubmit={handleLogin} >
+            <form onSubmit={handleLogin} autoComplete="on">
                 <div className="form-group">
                     <label>Email address</label>
                     <input type="email" className="form-control" placeholder="Enter email" value={email} onChange={(e) => setemail(e.target.value)}></input>
