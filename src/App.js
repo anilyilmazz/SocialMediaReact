@@ -1,4 +1,4 @@
-import React  from 'react'
+import React from 'react'
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -11,6 +11,7 @@ import Register from './components/auth/Register';
 import Home from './components/theme/Home';
 import ProtectedRoute from './components/ProtectedRoute';
 import NavbarComp from './components/theme/Navbar';
+import UserContextProvider from './contexts/UserContext';
 
 function App() {
   return (
@@ -21,7 +22,9 @@ function App() {
           <Switch>
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
-            <ProtectedRoute exact={true} path="/" component={Home} />
+            <UserContextProvider>
+              <ProtectedRoute exact={true} path="/" component={Home} />
+            </UserContextProvider>
           </Switch>
         </Router>
       </AuthContextProvider>

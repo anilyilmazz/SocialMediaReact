@@ -1,12 +1,11 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import CreatePost from '../posts/CreatePost'
+import UserSearch from '../users/UserSearch'
 
 function Home() {
-    useEffect(() => {
-console.log(12312)
-    })
     return (
         <div>
+            <UserSearch/>
             <CreatePost/>     
         </div>
     )

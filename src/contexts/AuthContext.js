@@ -12,7 +12,6 @@ class AuthContextProvider extends Component {
             id : id,
             isAuthenticated : true
         })
-        console.log(this.state);
     }
 
     register = (id) => {
