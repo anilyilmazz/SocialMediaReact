@@ -5,12 +5,11 @@ import {
 } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
 
-
 const NavbarComp = () => {
     const { state, logout } = useContext(AuthContext)
     const history = useHistory();
 
-    const logoutAndRedirect = () =>{
+    const logoutAndRedirect = () => {
         logout();
         history.push('/');
     }
@@ -27,18 +26,21 @@ const NavbarComp = () => {
                             <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
                         </li> */}
                     </ul>
+
                     {state.isAuthenticated ?
+                        <div>
+                            <ul className="navbar-nav">
+                                <li className="nav-item">
+                                    <button className="btn btn-link shadow-none" onClick={() => logoutAndRedirect()}>Log Out</button>
+                                </li>
+                            </ul>
+                        </div> :
                         <ul className="navbar-nav">
                             <li className="nav-item">
-                                <button className="btn btn-link shadow-none" onClick = {() => logoutAndRedirect()}>Log Out</button>
-                            </li>
-                        </ul> :
-                        <ul className="navbar-nav">
-                            <li className="nav-item">
-                                <button className="btn btn-link nav-link shadow-none"  onClick = {() => history.push('/login')}>Login</button>
+                                <button className="btn btn-link nav-link shadow-none" onClick={() => history.push('/login')}>Login</button>
                             </li>
                             <li className="nav-item">
-                                <button className="btn btn-link nav-link shadow-none" onClick = {() => history.push('/register')}>Register</button>
+                                <button className="btn btn-link nav-link shadow-none" onClick={() => history.push('/register')}>Register</button>
                             </li>
                         </ul>}
                 </div>
