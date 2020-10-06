@@ -35,7 +35,7 @@ function Login() {
                 if (filterUserList.length > 0){
                     if (filterUserList[0].Password === userObject.Password) {
                         setisSucces(true)                      
-                        login(filterUserList[0].objectId);
+                        login(filterUserList[0].Email);
                     }else {
                         seterror(true);
                     }

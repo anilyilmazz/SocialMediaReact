@@ -39,7 +39,7 @@ function Register() {
                         fetch(`https://api.backendless.com/${process.env.REACT_APP_API_KEY}/data/Accounts`, requestOptions)
                             .then(response => response.json())
                             .then((data) => {
-                                register(data.objectId);
+                                register(data.Email);
                                 clearInputs();
                                 clearErrors();
                                 setsuccess(true);

@@ -9,7 +9,7 @@ function CreatePost() {
     const handleCreatePost = () => {
         
         let postObject = {
-            userId: state.id,
+            userId: state.email,
             text: text
         } 
         const requestOptions = {
@@ -21,7 +21,6 @@ function CreatePost() {
             },
             body: JSON.stringify(postObject)
         };
-        console.log(requestOptions);
 
         fetch(`https://api.backendless.com/${process.env.REACT_APP_API_KEY}/data/Posts`, requestOptions)
             .then(response => response.json())

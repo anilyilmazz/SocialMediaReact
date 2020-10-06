@@ -3,27 +3,27 @@ export const AuthContext = createContext();
 
 class AuthContextProvider extends Component {
     state = {
-        id : '',
+        email : '',
         isAuthenticated : false
     }
     
-    login = (id) => {
+    login = (email) => {
         this.setState({
-            id : id,
+            email : email,
             isAuthenticated : true
         })
     }
 
-    register = (id) => {
+    register = (email) => {
         this.setState({
-            id : id,
+            email : email,
             isAuthenticated : true
         })
     }
 
     logout = () => {
         this.setState({
-            id : '',
+            email : '',
             isAuthenticated : false
         })
     }
