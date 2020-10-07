@@ -12,6 +12,7 @@ import Home from './components/theme/Home';
 import ProtectedRoute from './components/ProtectedRoute';
 import NavbarComp from './components/theme/Navbar';
 import UserContextProvider from './contexts/UserContext';
+import PostContextProvider from './contexts/PostContext';
 
 function App() {
   return (
@@ -23,7 +24,9 @@ function App() {
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
             <UserContextProvider>
-              <ProtectedRoute exact={true} path="/" component={Home} />
+              <PostContextProvider>
+                <ProtectedRoute exact={true} path="/" component={Home} />
+              </PostContextProvider>
             </UserContextProvider>
           </Switch>
         </Router>
